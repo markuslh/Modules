@@ -65,3 +65,9 @@ IO_ForHomalg/: 7c62bc8 Merge pull request #1 from sebasguts/master
 
 Versions:
  2012.10.17
+
+k-Points/: 9072d30 comply with the new GAPDoc testing methods
+
+Versions:
+2012.09.21 which is Mohamed's version
+2011.06.01 which is Alban's version
