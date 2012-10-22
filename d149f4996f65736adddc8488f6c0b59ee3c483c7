@@ -22,3 +22,8 @@ ExamplesForHomalg/: 16900d8 two to comply with the new GAPDoc testing methods
 
 Versions:
  2012.05.31
+
+Gauss/: b2fd778 Merge pull request #8 from sebasguts/master
+
+Versions:
+ 2012.10.17
