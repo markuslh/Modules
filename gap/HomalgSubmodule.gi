@@ -396,15 +396,29 @@ InstallMethod( RadicalIdealMembership,
         
     fi;
     
-    R_Rab := R * "RadicalTestVariable";
+    if IsBound( R!.RadicalTestRing ) and IsHomalgRing( R!.RadicalTestRing ) then
+        R_Rab := R!.RadicalTestRing;
+    else
+        R_Rab := R * "RadicalTestVariable";
+        R!.RadicalTestRing := R_Rab;
+    fi;
     
-    M_Rab := M / R_Rab;
+    if IsBound( M!.RadicalTestElement ) and IsHomalgRingElement( M!.RadicalTestElement ) and IsIdenticalObj( HomalgRing( SuperObject( M!.RadicalTestElement ) ), R_Rab ) then
+        M_Rab := M!.RadicalTestElement;
+    else
+        M_Rab := M / R_Rab;
+        M!.RadicalTestElement := M_Rab;
+    fi;
     
     indets := Indeterminates( R_Rab );
-    
     Rabinovich_Element := indets[ Length( indets ) ] * M_Rab - One( R_Rab );
     
-    F := R_Rab*SuperObject(I);
+    if IsBound( I!.RadicalTestElement ) and IsHomalgModule( I!.RadicalTestElement ) and IsIdenticalObj( HomalgRing( I!.RadicalTestElement ), R_Rab ) then
+        F := I!.RadicalTestElement;
+    else
+        F := R_Rab*SuperObject(I);;
+        I!.RadicalTestElement := F;
+    fi;
     
     Rabinovich_Element := HomalgMap( HomalgMatrix( [ Rabinovich_Element ], 1, 1, R_Rab ), F, F );
     
